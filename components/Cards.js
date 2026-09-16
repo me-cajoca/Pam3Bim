@@ -1,29 +1,35 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
 
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+} from 'react-native';
 
+import { BuscarIMG } from './Pokemons';
 
-const BaseCards = ({nome}) => {
-  var imagem
-  if (nome == "Bulbasaur"){
-    imagem = require('./assets/bulbasaur.png')
-  }
-  else if (nome == "Charmander"){
-    imagem = require('./assets/charmander.png')
-  }
-  else if (nome == "Squirtle"){
-    imagem = require('./assets/Squirtle.png')
-  }
-  
+const BaseCards = ({ nome, evo }) => {
+  const { imagem, NamePKM } = BuscarIMG(nome, evo);
+
   return (
     <View style={styles.container}>
+
       <View style={styles.card}>
-        <Text style={styles.titulo}>{nome}</Text>
+
+        <Text style={styles.titulo}>
+          {NamePKM}
+        </Text>
+
+        <View style={styles.linhaDecorativa} />
+
         <Image
           source={imagem}
-          style={{ width: 200, height: 200 }}
+          style={styles.img}
         />
+
       </View>
+
     </View>
   );
 };
@@ -32,50 +38,73 @@ export default BaseCards;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#f4f6f8',
-    justifyContent: 'center',
+    width: '100%',
+
     alignItems: 'center',
-    padding: 10,
+
+    paddingTop: 6,
   },
 
   card: {
-    width: '100%',
-    backgroundColor: '#fff',
-    borderRadius: 20,
-    padding: 25,
-    marginBottom: 50,
+    width: '97%',
+    maxWidth: 500,
 
-    shadowColor: '#000',
+    backgroundColor: '#ffffff',
+
+    borderRadius: 28,
+
+    paddingVertical: 25,
+    paddingHorizontal: 20,
+
+    marginBottom: 22,
+
+    borderWidth: 1,
+    borderColor: '#dbeafe',
+
+    shadowColor: '#2563eb',
+
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 8,
     },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
 
-    elevation: 6,
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+
+    elevation: 8,
   },
 
   titulo: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#1e293b',
-    marginBottom: 20,
+    fontSize: 32,
+
+    fontWeight: '900',
+
+    color: '#1e3a8a',
+
     textAlign: 'center',
+
+    marginBottom: 16,
+
+    letterSpacing: 1,
   },
 
-  label: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#334155',
-    marginTop: 12,
+  linhaDecorativa: {
+    width: '40%',
+    height: 5,
+
+    backgroundColor: '#60a5fa',
+
+    borderRadius: 999,
+
+    alignSelf: 'center',
+
+    marginBottom: 20,
   },
 
-  texto: {
-    fontSize: 16,
-    color: '#64748b',
-    marginTop: 4,
-    lineHeight: 24,
+  img: {
+    width: '100%',
+    height: 210,
+
+    resizeMode: 'contain',
   },
 });

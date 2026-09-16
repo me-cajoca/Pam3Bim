@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from './Arquivo2';
 
+
 const Tab = createBottomTabNavigator();
 
 const PerfilScreen = () => (

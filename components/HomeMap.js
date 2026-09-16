@@ -1,11 +1,12 @@
-import { View, Text, TouchableOpacity, Image, useWindowDimensions, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image, useWindowDimensions, StyleSheet, ScrollView } from 'react-native';
 
 export default function Home({ navigation }) {
   const { width, height } = useWindowDimensions();
-  const kanto = require('./assets/KantoMap.png');
-  const hoenn = require('./assets/HoennMap.jpg');
+  const kanto = require('./assets/Kanto/kantoMap.jpeg');
+  const hoenn = require('./assets/Hoenn/HoennMap.jpeg');
 
   return (
+    <ScrollView>
     <View style={styles.container}>
       <Text style={styles.title}>Pokédex</Text>
       <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Kanto')}>
@@ -13,12 +14,13 @@ export default function Home({ navigation }) {
         <Text style={styles.cardTitle}>Kanto</Text>
         <Text style={styles.cardSub}>151 Pokémons</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Hoenn')}>
+      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Hoen')}>
         <Image source={hoenn} style={{ width: width * 0.8, height: height * 0.25, resizeMode: 'contain' }}/>
         <Text style={styles.cardTitle}>Hoenn</Text>
         <Text style={styles.cardSub}>135 Pokémons</Text>
       </TouchableOpacity>
     </View>
+    </ScrollView>
   );
 }
 
